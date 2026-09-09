@@ -1,5 +1,10 @@
 # Decap CMS 配置
-# repo 填你的 GitHub 仓库，例如: yourname/yourname.github.io
+
+# 后台品牌与语言
+logo_url: /images/avatar.jpg
+locale: zh_Hans
+display_url: https://MieoM79.github.io
+site_url: https://MieoM79.github.io
 
 backend:
   name: github
