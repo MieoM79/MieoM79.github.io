@@ -1,0 +1,15 @@
+.DS_Store
+Thumbs.db
+db.json
+*.log
+node_modules/
+public/
+.deploy*/
+_multiconfig.yml
+
+# 本地的选图素材（不入库）
+_pick/
+
+# IDE
+.vscode/
+.idea/

@@ -1,0 +1,82 @@
+- const { serverURL, option, pageview } = theme.waline
+- const { lazyload, count, use } = theme.comments
+
+script.
+  (() => {
+    let initFn = window.walineFn || null
+    const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+    const option = !{JSON.stringify(option)}
+
+    const destroyWaline = ele => ele.destroy()
+
+    const initWaline = (Fn, el = document, path = window.location.pathname) => {
+      const waline = Fn({
+        el: el.querySelector('#waline-wrap'),
+        serverURL: '!{serverURL}',
+        pageview: !{lazyload ? false : pageview},
+        dark: 'html[data-theme="dark"]',
+        comment: !{lazyload ? false : count},
+        ...option,
+        path: isShuoshuo ? path : (option && option.path) || path
+      })
+
+      let lightboxObserver = null
+      if (GLOBAL_CONFIG.lightbox !== 'null') {
+        const wrap = el.querySelector('#waline-wrap')
+        if (wrap) {
+          lightboxObserver = new MutationObserver(mutations => {
+            const imgs = []
+            mutations.forEach(mutation => {
+              mutation.addedNodes.forEach(node => {
+                if (node.nodeType !== 1) return
+                const nodeImgs = node.matches && node.matches('img') ? [node] : node.querySelectorAll('img')
+                nodeImgs.forEach(img => imgs.push(img))
+              })
+            })
+            const lightboxImgs = imgs.filter(img => img.closest('.wl-content') && !img.classList.contains('wl-emoji'))
+            if (lightboxImgs.length) btf.loadLightbox(lightboxImgs)
+          })
+          lightboxObserver.observe(wrap, { childList: true, subtree: true })
+        }
+      }
+
+      if (isShuoshuo) {
+        window.shuoshuoComment.destroyWaline = () => {
+          lightboxObserver && lightboxObserver.disconnect()
+          destroyWaline(waline)
+          if (el.children.length) {
+            el.innerHTML = ''
+            el.classList.add('no-comment')
+          }
+        }
+      }
+    }
+
+    const loadWaline = (el, path) => {
+      if (initFn) initWaline(initFn, el, path)
+      else {
+        btf.getCSS('!{url_for(theme.asset.waline_css)}')
+          .then(() => import('!{url_for(theme.asset.waline_js)}'))
+          .then(({ init }) => {
+            initFn = init || Waline.init
+            initWaline(initFn, el, path)
+            window.walineFn = initFn
+          })
+      }
+    }
+
+    if (isShuoshuo) {
+      '!{use[0]}' === 'Waline'
+        ? window.shuoshuoComment = { loadComment: loadWaline }
+        : window.loadOtherComment = loadWaline
+      return
+    }
+
+    if ('!{use[0]}' === 'Waline' || !!{lazyload}) {
+      if (!{lazyload}) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+      else setTimeout(loadWaline, 0)
+    } else {
+      window.loadOtherComment = loadWaline
+    }
+  })()
+

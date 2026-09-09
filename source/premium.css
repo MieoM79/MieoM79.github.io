@@ -1,0 +1,64 @@
+/* ============ Premium polish (ashuka over Butterfly) ============ */
+
+body { letter-spacing: .012em; }
+
+/* serif literary headings */
+#site-title,
+.site-name,
+.post-title,
+.article-title,
+h1, h2, h3 {
+  font-family: "Songti SC", "Noto Serif SC", "Source Han Serif SC", serif;
+}
+#site-title { letter-spacing: .1em; font-weight: 600; }
+#site-subtitle { letter-spacing: .22em; font-weight: 300; }
+.site-name { letter-spacing: .06em; }
+
+/* frosted nav */
+#nav { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+
+/* premium cards */
+.card-widget,
+.recent-post-item {
+  border-radius: 16px;
+  border: 1px solid rgba(106, 90, 205, .09);
+  box-shadow: 0 2px 16px rgba(28, 24, 66, .06);
+  transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+}
+.card-widget:hover,
+.recent-post-item:hover {
+  transform: translateY(-3px);
+  border-color: rgba(106, 90, 205, .22);
+  box-shadow: 0 12px 30px rgba(28, 24, 66, .14);
+}
+
+/* article titles */
+.post-title { letter-spacing: .03em; line-height: 1.45; }
+.article-title { letter-spacing: .02em; }
+
+/* refined scrollbar & selection */
+::-webkit-scrollbar { width: 9px; height: 9px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(106, 90, 205, .38); border-radius: 9px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(106, 90, 205, .65); }
+::selection { background: rgba(106, 90, 205, .28); }
+
+/* refined blocks & quotes */
+.post-content { font-size: 1.02rem; line-height: 1.95; }
+.post-content h2 { letter-spacing: .04em; }
+.post-content blockquote { border-radius: 0 10px 10px 0; }
+
+/* refined tags */
+.tag-list a,
+.post-tags a { border-radius: 6px; }
+
+/* premium footer */
+#footer { padding: 34px 0 22px; letter-spacing: .06em; }
+#footer .framework-info a { color: var(--theme-color, #6a5acd); }
+
+/* buttons */
+.card-info .card-info-social-icons,
+#post-info .post-meta a { transition: color .2s ease; }
+
+/* smoother reveal for images */
+.post-content img { transition: transform .4s ease; }

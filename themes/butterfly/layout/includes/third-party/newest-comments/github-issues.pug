@@ -1,0 +1,49 @@
+!= partial("includes/third-party/newest-comments/common.pug", {}, { cache: true })
+
+script.
+  window.newestComments.ready(() => {
+    const keyName = 'github-newest-comments'
+    const { changeContent, run } = window.newestComments
+
+    const findTrueUrl = array => {
+      return Promise.all(array.map(item =>
+        fetch(item.url)
+          .then(resp => resp.json())
+          .then(data => {
+            let urlArray = data.body ? data.body.match(/(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?/ig) : []
+            if (!Array.isArray(urlArray) || urlArray.length === 0) {
+              urlArray = [item.html_url]
+            }
+            const isBot = data.user && data.user.login === 'utterances-bot'
+            return isBot ? urlArray.pop() : urlArray.shift()
+          })
+          .catch(() => item.html_url)
+      )).then(res => array.map((item, index) => {
+        return {
+          ...item,
+          url: res[index]
+        }
+      }))
+    }
+
+    const getComment = () => {
+      return fetch('https://api.github.com/repos/!{userRepo}/issues/comments?sort=updated&direction=desc&per_page=!{newestCommentsLimit}&page=1', {
+        "headers": {
+          Accept: 'application/vnd.github.v3.html+json'
+        }
+      })
+        .then(response => response.json())
+        .then(data => data.map(item => {
+          return {
+            'avatar': item.user.avatar_url,
+            'content': changeContent(item.body_html || item.body),
+            'nick': item.user.login,
+            'url': item.html_url,
+            'date': item.updated_at
+          }
+        }))
+        .then(findTrueUrl)
+    }
+
+    run(keyName, getComment)
+  })

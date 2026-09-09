@@ -1,0 +1,25 @@
+- const serverURL = theme.waline.serverURL ? theme.waline.serverURL.replace(/\/$/, '') : ''
+
+!= partial("includes/third-party/newest-comments/common.pug", {}, { cache: true })
+
+script.
+  window.newestComments.ready(() => {
+    const keyName = 'waline-newest-comments'
+    const { changeContent, run } = window.newestComments
+
+    const getComment = async () => {
+      const res = await fetch('!{serverURL}/api/comment?type=recent&count=!{newestCommentsLimit}')
+      const result = await res.json()
+      return result.data.map(e => {
+        return {
+          'content': changeContent(e.comment),
+          'avatar': e.avatar,
+          'nick': e.nick,
+          'url': (e.url || '') + '#' + e.objectId,
+          'date': e.time || e.insertedAt
+        }
+      })
+    }
+
+    run(keyName, getComment)
+  })
