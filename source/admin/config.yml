@@ -5,6 +5,7 @@ backend:
   name: github
   repo: MieoM79/MieoM79.github.io
   branch: main
+  client_id: Ov23ctdKhR4EYtbiPS9s
 
 publish_mode: editorial_workflow
 
