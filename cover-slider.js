@@ -5,7 +5,15 @@
     '/images/cover-3.jpg',
     '/images/cover-4.jpg',
     '/images/cover-5.jpg',
-    '/images/cover-6.jpg'
+    '/images/cover-6.jpg',
+    '/images/cover-7.jpg',
+    '/images/cover-8.jpg',
+    '/images/cover-9.jpg',
+    '/images/cover-10.jpg',
+    '/images/cover-11.jpg',
+    '/images/cover-12.jpg',
+    '/images/cover-13.jpg',
+    '/images/cover-14.jpg'
   ];
   var h = document.getElementById('page-header');
   // 只在首页(有 #site-info 的登陆页)跑轮播，文章页不轮换
