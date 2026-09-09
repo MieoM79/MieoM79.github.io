@@ -5,6 +5,8 @@ backend:
   name: github
   repo: MieoM79/MieoM79.github.io
   branch: main
+  base_url: https://oauth-proxy-tan.vercel.app
+  auth_endpoint: api/oauth
   client_id: Ov23ctdKhR4EYtbiPS9s
 
 publish_mode: editorial_workflow
