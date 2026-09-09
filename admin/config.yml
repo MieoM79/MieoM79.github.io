@@ -14,7 +14,8 @@ backend:
   auth_endpoint: api/oauth
   client_id: Ov23ctdKhR4EYtbiPS9s
 
-publish_mode: editorial_workflow
+# 直接发布（不做草稿/审核流程，保存即上线）
+publish_mode: simple
 
 media_folder: source/images
 public_folder: /images
@@ -27,6 +28,5 @@ collections:
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
       - { label: 标题, name: title, widget: string }
-      - { label: 日期, name: date, widget: datetime }
-      - { label: 标签, name: tags, widget: list, default: ['随笔'] }
       - { label: 正文, name: body, widget: markdown }
+      - { label: 标签(可选), name: tags, widget: list, required: false }
