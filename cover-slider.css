@@ -1,0 +1,3 @@
+#page-header{position:relative;z-index:0}
+.cover-slide{position:absolute;inset:0;background-size:cover;background-position:center;z-index:-1;opacity:0;transition:opacity 1.6s ease;pointer-events:none}
+.cover-slide.show{opacity:1}
