@@ -266,7 +266,7 @@ footer:
   copyright:
     enable: true
     version: true
-  custom_text:
+  custom_text: 壁纸素材来自网络，版权归原作者所有，仅作本站美化使用
 
 # --------------------------------------
 # Aside Settings
