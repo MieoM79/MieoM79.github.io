@@ -1,0 +1,73 @@
+/* 站点自定义覆盖
+   1) 修正 Stellar 右栏（桌面端为透明"抽屉"样式）文字对比度过低的问题
+   2) 给右栏组件卡片底，视觉上与左栏一致 */
+
+.site-region--rightbar .widget-wrapper {
+  background: var(--card);
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-bottom: 14px;
+  box-shadow: 0 2px 12px rgba(20, 16, 40, 0.06);
+}
+
+/* 兜底：组件始终完全可见（主题把 widget 标题设为 opacity:0.3，这里恢复） */
+aside#rightbar-region .widget-header > span,
+aside#rightbar-region .widgets .widget-wrapper .widget-header > span {
+  opacity: 1 !important;
+}
+aside#rightbar-region .widget-body,
+aside#rightbar-region .widget-body * {
+  opacity: 1 !important;
+}
+.site-region--rightbar .widget-instance,
+.site-region--rightbar .widget-wrapper,
+.site-region--rightbar .slide-up {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* 文字强制可读（浅色模式）——用 ID 提高优先级，压过主题的 !important */
+aside#rightbar-region,
+aside#rightbar-region *,
+aside#rightbar-region widget,
+aside#rightbar-region widget * {
+  color: #33313d !important;
+}
+aside#rightbar-region .name {
+  color: #15131d !important;
+  font-weight: 600;
+}
+aside#rightbar-region a:hover {
+  color: var(--theme) !important;
+}
+
+/* 标签云药丸 */
+.site-region--rightbar .tagcloud .tag {
+  background: var(--theme-a10);
+  border-radius: 6px;
+  padding: 2px 8px;
+  display: inline-block;
+  margin: 2px 4px 2px 0;
+}
+
+/* 深色模式适配 */
+@media (prefers-color-scheme: dark) {
+  .site-region--rightbar,
+  .site-region--rightbar .widget-wrapper,
+  .site-region--rightbar .widget-wrapper * {
+    color: #cfcadd !important;
+  }
+  .site-region--rightbar .widget-wrapper .name,
+  .site-region--rightbar .widget-header .name {
+    color: #ffffff !important;
+  }
+}
+:root[data-theme="dark"] .site-region--rightbar,
+:root[data-theme="dark"] .site-region--rightbar .widget-wrapper,
+:root[data-theme="dark"] .site-region--rightbar .widget-wrapper * {
+  color: #cfcadd !important;
+}
+:root[data-theme="dark"] .site-region--rightbar .widget-wrapper .name,
+:root[data-theme="dark"] .site-region--rightbar .widget-header .name {
+  color: #ffffff !important;
+}
