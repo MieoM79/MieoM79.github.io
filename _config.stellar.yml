@@ -1,0 +1,70 @@
+# Stellar 站点配置覆盖（MieoM79の树洞）
+
+topbar:
+  enabled: true
+  brand:
+    name: MieoM79の树洞
+    tagline: 把心事，说给这里听
+    image:
+      src: /images/avatar.jpg
+      variant: avatar
+    href: /
+  menu:
+    - id: post
+      title: 首页
+      url: /
+    - id: tags
+      title: 标签
+      url: /tags/
+    - id: archives
+      title: 归档
+      url: /archives/
+    - id: about
+      title: 关于
+      url: /about/
+  widgets:
+    - spacer
+    - menu
+    - settings
+
+leftbar:
+  enabled: false
+
+footer:
+  sitemap:
+    - title: 博客
+      items:
+        - '[首页](/)'
+        - '[关于](/about/)'
+        - '[归档](/archives/)'
+        - '[标签](/tags/)'
+    - title: 联系
+      items:
+        - '[ Bilibili @MieoM79](https://space.bilibili.com/155495530)'
+        - '[ QQ空间](https://user.qzone.qq.com/746864438)'
+        - '[ GitHub](https://github.com/MieoM79)'
+  content: |
+    © 2026 By MieoM79 · 壁纸素材来自网络，版权归原作者所有，仅作本站美化使用。
+
+appearance:
+  preset: flat
+  color_scheme: auto
+  colors:
+    primary: hsl(250 55% 55%)
+    accent: hsl(349 64% 55%)
+
+article:
+  style: story
+  listing:
+    pinned_layout: flat
+    card_layout: hero
+    show_tags: true
+  show_reading_time: true
+
+inject:
+  head_end: |
+    <link rel="stylesheet" href="/home-hero.css">
+  body_begin: |
+    <div id="bg-covers" hidden></div>
+  body_end: |
+    <script src="/home-hero.js"></script>

@@ -1,0 +1,28 @@
+/* 首页全屏轮换背景（Stellar 版，由 home-hero.js 驱动） */
+#bg-covers {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: -1;
+  background: #0d0b18;
+  overflow: hidden;
+}
+#bg-covers .bg-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center 30%;
+  opacity: 0;
+  transition: opacity 1.6s ease;
+  will-change: opacity;
+}
+#bg-covers .bg-slide.show {
+  opacity: 1;
+}
+/* 弱化遮罩，保证正文可读性 */
+#bg-covers::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10, 8, 20, 0.62), rgba(10, 8, 20, 0.28) 42%, rgba(10, 8, 20, 0.78));
+  pointer-events: none;
+}
