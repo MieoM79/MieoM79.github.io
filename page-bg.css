@@ -29,7 +29,7 @@ body {
 }
 
 #page-bg .bg-slide.show {
-  opacity: 0.62;
+  opacity: var(--slide-opacity, 0.62);
 }
 
 /* 统一蒙层：把不同壁纸的明暗差异压平，避免忽明忽暗 */
