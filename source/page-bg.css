@@ -1,8 +1,8 @@
-/* 页面背景层（背景就是背景，与文章封面无关）
-   做法：浅色底 + 极淡的模糊图（约 12% 不透明度），只提供氛围色调，不干扰阅读 */
+/* 页面背景层：壁纸作为背景清晰可见（背景就是背景），
+   阅读区由 site-custom.css 里的"纸面"负责可读性 */
 
 body {
-  background: linear-gradient(180deg, #f7f5ff 0%, #fbfaff 40%, #ffffff 100%) fixed;
+  background: #221e2e fixed;
 }
 
 #page-bg {
@@ -22,12 +22,21 @@ body {
   background-size: cover;
   background-position: center;
   opacity: 0;
-  /* 大幅模糊 + 去饱和：图变成柔和的色雾，而非可辨认的画面 */
-  filter: blur(22px) saturate(0.85);
-  transform: scale(1.12);
-  transition: opacity 2.4s ease;
+  /* 只做轻微柔化：图依然可辨认，但不会太扎眼 */
+  filter: blur(3px) saturate(0.95) brightness(0.95);
+  transform: scale(1.02);
+  transition: opacity 1.8s ease;
 }
 
 #page-bg .bg-slide.show {
-  opacity: 0.12;
+  opacity: 0.62;
+}
+
+/* 统一蒙层：把不同壁纸的明暗差异压平，避免忽明忽暗 */
+#page-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(18, 15, 30, 0.22);
+  pointer-events: none;
 }

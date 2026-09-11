@@ -71,3 +71,20 @@ aside#rightbar-region a:hover {
 :root[data-theme="dark"] .site-region--rightbar .widget-header .name {
   color: #ffffff !important;
 }
+/* ===== 阅读区"纸面"：壁纸作背景时，正文与页脚落在半透明纸面上 ===== */
+main#main {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 18px 20px;
+  box-shadow: 0 6px 26px rgba(15, 12, 30, 0.12);
+}
+.page-footer {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 16px 20px;
+  margin-top: 16px;
+}
