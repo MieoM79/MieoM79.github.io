@@ -10,7 +10,12 @@
     '/images/cover-11.jpg',
     '/images/cover-12.jpg',
     '/images/cover-13.jpg',
-    '/images/cover-14.jpg'
+    '/images/cover-14.jpg',
+    '/images/cover-15.jpg',
+    '/images/cover-16.jpg',
+    '/images/cover-17.jpg',
+    '/images/cover-18.jpg',
+    '/images/cover-19.jpg'
   ];
   var h = document.getElementById('page-header');
   // 只在首页(有 #site-info 的登陆页)跑轮播，文章页不轮换
