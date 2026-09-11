@@ -1,0 +1,119 @@
+{
+  "version": 1,
+  "images": {
+    "https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=https%3A%2F%2Fmieom79.github.io%2F2026%2F01%2F01%2Fwelcome%2F": {
+      "updatedAt": "2026-09-11T01:46:24.880Z",
+      "dimensions": {
+        "status": "ready",
+        "width": 256,
+        "height": 256
+      },
+      "color": {
+        "status": "ready",
+        "algorithm": "hsla-mean-v1",
+        "size": 64,
+        "hsla": [
+          0,
+          0,
+          49.3474,
+          1
+        ]
+      }
+    },
+    "https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=https%3A%2F%2Fmieom79.github.io%2F2026%2F09%2F08%2F2026-09-09-first-time%2F": {
+      "updatedAt": "2026-09-11T01:50:30.611Z",
+      "dimensions": {
+        "status": "ready",
+        "width": 256,
+        "height": 256
+      },
+      "color": {
+        "status": "ready",
+        "algorithm": "hsla-mean-v1",
+        "size": 64,
+        "hsla": [
+          0,
+          0,
+          51.0026,
+          1
+        ]
+      }
+    },
+    "https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=https%3A%2F%2Fmieom79.github.io%2F2026%2F09%2F09%2F2026-09-09-first-time%2F": {
+      "updatedAt": "2026-09-11T01:46:24.963Z",
+      "dimensions": {
+        "status": "ready",
+        "width": 256,
+        "height": 256
+      },
+      "color": {
+        "status": "ready",
+        "algorithm": "hsla-mean-v1",
+        "size": 64,
+        "hsla": [
+          0,
+          0,
+          50.0736,
+          1
+        ]
+      }
+    },
+    "https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/404/1c830bfcd517d.svg": {
+      "updatedAt": "2026-09-11T01:46:24.646Z",
+      "dimensions": {
+        "status": "ready",
+        "width": 512,
+        "height": 512
+      },
+      "color": {
+        "status": "ready",
+        "algorithm": "hsla-mean-v1",
+        "size": 64,
+        "hsla": [
+          36.4646,
+          68.3569,
+          22.5742,
+          0.5248
+        ]
+      }
+    },
+    "https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/3442075.svg": {
+      "updatedAt": "2026-09-11T01:46:24.711Z",
+      "dimensions": {
+        "status": "ready",
+        "width": 512,
+        "height": 512
+      },
+      "color": {
+        "status": "ready",
+        "algorithm": "hsla-mean-v1",
+        "size": 64,
+        "hsla": [
+          213.0922,
+          39.5689,
+          45.6228,
+          0.7864
+        ]
+      }
+    },
+    "https://mieom79.github.io/images/avatar.jpg": {
+      "updatedAt": "2026-09-11T01:47:37.807Z",
+      "dimensions": {
+        "status": "ready",
+        "width": 512,
+        "height": 512
+      },
+      "color": {
+        "status": "ready",
+        "algorithm": "hsla-mean-v1",
+        "size": 64,
+        "hsla": [
+          243.0694,
+          44.1269,
+          57.0473,
+          1
+        ]
+      }
+    }
+  }
+}

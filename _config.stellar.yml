@@ -1,34 +1,80 @@
 # Stellar 站点配置覆盖（MieoM79の树洞）
+# 参考 crystal.stellalyr.ink 的布局：关顶栏、开左栏+右栏、卡片预设、悬停聚光
 
 topbar:
+  enabled: false
+
+leftbar:
   enabled: true
+  default_state: expanded
   brand:
-    name: MieoM79の树洞
-    tagline: 把心事，说给这里听
+    style: regular
     image:
       src: /images/avatar.jpg
       variant: avatar
+    name: MieoM79の树洞
+    tagline: 把心事，说给这里听
     href: /
   menu:
     - id: post
       title: 首页
+      icon: default:documents
       url: /
+      accent: '#6a5acd'
     - id: tags
       title: 标签
+      icon: default:hashtag
       url: /tags/
+      accent: '#c94f6d'
     - id: archives
       title: 归档
+      icon: default:calendar
       url: /archives/
+      accent: '#7C4DFF'
     - id: about
       title: 关于
+      icon: default:profile
       url: /about/
-  widgets:
-    - spacer
-    - menu
-    - settings
+      accent: '#3DC550'
+    - type: search
+  widgets: []
+  footer:
+    actions:
+      - type: link
+        icon: default:github
+        url: https://github.com/MieoM79
+        title: GitHub
+      - type: link
+        icon: default:link
+        url: https://space.bilibili.com/155495530
+        title: Bilibili
+      - type: link
+        icon: default:link
+        url: https://user.qzone.qq.com/746864438
+        title: QQ空间
 
-leftbar:
-  enabled: false
+rightbar:
+  enabled: true
+  widgets:
+    - tagtree
+    - recent
+
+profiles:
+  home:
+    leftbar:
+      widgets: []
+    rightbar:
+      widgets:
+        - tagcloud
+        - recent
+  post:
+    leftbar:
+      widgets:
+        - related
+    rightbar:
+      widgets:
+        - toc
+        - recent
 
 footer:
   sitemap:
@@ -47,11 +93,17 @@ footer:
     © 2026 By MieoM79 · 壁纸素材来自网络，版权归原作者所有，仅作本站美化使用。
 
 appearance:
-  preset: flat
+  preset: card
   color_scheme: auto
   colors:
     primary: hsl(250 55% 55%)
     accent: hsl(349 64% 55%)
+  typography:
+    font_family:
+      body: '"LXGW WenKai Screen", system-ui, "Microsoft Yahei", sans-serif'
+      code: '"Maple Mono CN", ui-monospace, Menlo, Consolas, monospace'
+    font_size:
+      root: 16.5px
 
 article:
   style: story
@@ -61,8 +113,19 @@ article:
     show_tags: true
   show_reading_time: true
 
+features:
+  color_scheme_switch:
+    enabled: true
+  reveal:
+    enabled: true
+  card_hover:
+    spotlight: true
+    tilt: false
+
 inject:
   head_end: |
+    <link rel="stylesheet" href="https://npm.elemecdn.com/lxgw-wenkai-screen-webfont@1.1.0/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@automann/maple-mono-cn@7.9.2/dist/regular.css">
     <link rel="stylesheet" href="/home-hero.css">
   body_begin: |
     <div id="bg-covers" hidden></div>
