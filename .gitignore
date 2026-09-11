@@ -10,6 +10,9 @@ _multiconfig.yml
 # 本地的选图素材（不入库）
 _pick/
 
+# 主题生成的缓存（不入库，但 source/_data 下的配置要入库）
+source/_data/caches/
+
 # IDE
 .vscode/
-.idea/source/_data/
+.idea/

@@ -30,3 +30,41 @@ collections:
       - { label: 标题, name: title, widget: string }
       - { label: 正文, name: body, widget: markdown }
       - { label: 标签(可选), name: tags, widget: list, required: false }
+
+  # 站点设置（单文件编辑，保存即生效）
+  - name: settings
+    label: 站点设置
+    files:
+      - name: background
+        label: 背景壁纸
+        file: source/_data/background.yml
+        fields:
+          - label: 启用哪些壁纸
+            name: images
+            widget: list
+            required: false
+            hint: 点「添加」从图库里选图；顺序即轮换顺序
+            field: { label: 图片, name: image, widget: image }
+          - label: 可见度
+            name: opacity
+            widget: number
+            min: 0
+            max: 1
+            step: 0.02
+            default: 0.62
+            hint: 越小越淡（0.3 很含蓄，0.8 很明显）
+          - label: 模糊程度
+            name: blur
+            widget: number
+            min: 0
+            max: 30
+            step: 1
+            default: 3
+            hint: 0 = 清晰，数字越大越模糊
+          - label: 切换间隔（秒）
+            name: interval
+            widget: number
+            min: 3
+            max: 60
+            step: 1
+            default: 9

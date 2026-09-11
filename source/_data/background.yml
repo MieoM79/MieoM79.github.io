@@ -1,0 +1,11 @@
+﻿# 背景壁纸设置（可在后台「站点设置 → 背景壁纸」里修改）
+images:
+  - /images/cover-3.jpg
+  - /images/cover-13.jpg
+  - /images/cover-19.jpg
+# 可见度 0~1（越小越淡）
+opacity: 0.62
+# 模糊像素（越大越糊）
+blur: 3
+# 切换间隔（秒）
+interval: 9
