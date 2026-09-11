@@ -46,8 +46,9 @@ code_blocks:
 # Formal:
 #   icon: link || the description || color
 social:
-  # fab fa-github: https://github.com/xxxxx || Github || '#24292e'
-  # fas fa-envelope: mailto:xxxxxx@gmail.com || Email || '#4a7dbe'
+  fab fa-qq: https://user.qzone.qq.com/746864438 || QQ空间 || '#fdb933'
+  fab fa-bilibili: https://space.bilibili.com/155495530 || Bilibili || '#fb7299'
+  fab fa-github: https://github.com/MieoM79 || Github || '#24292e'
 
 # --------------------------------------
 # Image Settings
