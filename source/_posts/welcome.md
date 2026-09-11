@@ -1,7 +1,6 @@
 ﻿---
 title: 你好，树洞
 date: 2026-01-01 00:00:00
-cover: /images/cover-15.jpg
 tags:
   - 随笔
 ---
