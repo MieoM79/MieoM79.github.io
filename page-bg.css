@@ -1,0 +1,33 @@
+/* 页面背景层（背景就是背景，与文章封面无关）
+   做法：浅色底 + 极淡的模糊图（约 12% 不透明度），只提供氛围色调，不干扰阅读 */
+
+body {
+  background: linear-gradient(180deg, #f7f5ff 0%, #fbfaff 40%, #ffffff 100%) fixed;
+}
+
+#page-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+#page-bg .bg-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  /* 大幅模糊 + 去饱和：图变成柔和的色雾，而非可辨认的画面 */
+  filter: blur(22px) saturate(0.85);
+  transform: scale(1.12);
+  transition: opacity 2.4s ease;
+}
+
+#page-bg .bg-slide.show {
+  opacity: 0.12;
+}
