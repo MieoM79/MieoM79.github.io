@@ -1,4 +1,4 @@
-# Stellar 站点配置覆盖（MieoM79の树洞）
+﻿# Stellar 站点配置覆盖（MieoM79の树洞）
 # 参考 crystal.stellalyr.ink 的布局：关顶栏、开左栏+右栏、卡片预设、悬停聚光
 
 topbar:
@@ -117,7 +117,7 @@ features:
   color_scheme_switch:
     enabled: true
   reveal:
-    enabled: true
+    enabled: false
   card_hover:
     spotlight: true
     tilt: false
@@ -126,8 +126,4 @@ inject:
   head_end: |
     <link rel="stylesheet" href="https://npm.elemecdn.com/lxgw-wenkai-screen-webfont@1.1.0/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@automann/maple-mono-cn@7.9.2/dist/regular.css">
-    <link rel="stylesheet" href="/home-hero.css">
-  body_begin: |
-    <div id="bg-covers" hidden></div>
-  body_end: |
-    <script src="/home-hero.js"></script>
+    <link rel="stylesheet" href="/site-custom.css">

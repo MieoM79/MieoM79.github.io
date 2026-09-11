@@ -114,6 +114,44 @@
           1
         ]
       }
+    },
+    "https://mieom79.github.io/images/cover-15.jpg": {
+      "updatedAt": "2026-09-11T02:37:46.522Z",
+      "dimensions": {
+        "status": "ready",
+        "width": 1920,
+        "height": 1080
+      },
+      "color": {
+        "status": "ready",
+        "algorithm": "hsla-mean-v1",
+        "size": 64,
+        "hsla": [
+          238.819,
+          13.8483,
+          23.3225,
+          1
+        ]
+      }
+    },
+    "https://mieom79.github.io/images/cover-2.jpg": {
+      "updatedAt": "2026-09-11T02:37:46.515Z",
+      "dimensions": {
+        "status": "ready",
+        "width": 1920,
+        "height": 1080
+      },
+      "color": {
+        "status": "ready",
+        "algorithm": "hsla-mean-v1",
+        "size": 64,
+        "hsla": [
+          354.1857,
+          98.9457,
+          22.6659,
+          1
+        ]
+      }
     }
   }
 }
