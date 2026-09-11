@@ -1,5 +1,5 @@
 :root {
-  --fs-root: 16px;
+  --fs-root: 16.5px;
   --fs-content-base: var(--fs-root);
   --fs-content: var(--fs-content-base);
   --width-main-article: 800px;
@@ -22,7 +22,7 @@
 }
 @media screen and (max-width: 667px) {
   :root {
-    --fs-root: calc(16px + 1px);
+    --fs-root: calc(16.5px + 1px);
     --side-content-width: 224px;
   }
 }
@@ -129,7 +129,7 @@ body[data-page-layout='index_wiki'] {
 }
 .md-text .cmt-body.waline .wl-editor {
   font-size: var(--waline-font-size);
-  font-family: system-ui, "Microsoft Yahei", "Segoe UI", Arial, sans-serif;
+  font-family: "LXGW WenKai Screen", system-ui, "Microsoft Yahei", sans-serif;
 }
 .md-text .cmt-body.waline .wl-content .wl-emoji,
 .md-text .cmt-body.waline .wl-content .vemoji {

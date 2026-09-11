@@ -1,5 +1,5 @@
 :root {
-  --fs-root: 16px;
+  --fs-root: 16.5px;
   --fs-content-base: var(--fs-root);
   --fs-content: var(--fs-content-base);
   --width-main-article: 800px;
@@ -22,7 +22,7 @@
 }
 @media screen and (max-width: 667px) {
   :root {
-    --fs-root: calc(16px + 1px);
+    --fs-root: calc(16.5px + 1px);
     --side-content-width: 224px;
   }
 }
