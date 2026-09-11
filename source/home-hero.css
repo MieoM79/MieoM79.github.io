@@ -1,28 +1,37 @@
-/* 首页全屏轮换背景（Stellar 版，由 home-hero.js 驱动） */
+/* 首页全屏轮换背景（Stellar 版，由 home-hero.js 驱动）
+   原则：图像弱化到"氛围色"级别，正文永远落在深色底上，保证可读。 */
 #bg-covers {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
   z-index: -1;
-  background: #0d0b18;
+  background: #0b0915; /* 深色底，任何图都垫得住 */
   overflow: hidden;
 }
 #bg-covers .bg-slide {
   position: absolute;
   inset: 0;
   background-size: cover;
-  background-position: center 30%;
-  opacity: 0;
+  background-position: center;
+  /* 关键：压低不透明度 + 模糊虚化 + 压暗，亮暗图都统一成柔和氛围 */
+  opacity: 0.36;
+  filter: blur(9px) brightness(0.72) saturate(0.9);
+  transform: scale(1.06); /* 防止模糊露出边缘 */
   transition: opacity 1.6s ease;
   will-change: opacity;
 }
 #bg-covers .bg-slide.show {
-  opacity: 1;
+  opacity: 0.36;
 }
-/* 弱化遮罩，保证正文可读性 */
+/* 加重暗色蒙层，进一步保证对比度 */
 #bg-covers::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(10, 8, 20, 0.62), rgba(10, 8, 20, 0.28) 42%, rgba(10, 8, 20, 0.78));
+  background: linear-gradient(180deg, rgba(11, 9, 21, 0.82), rgba(11, 9, 21, 0.56) 45%, rgba(11, 9, 21, 0.88));
   pointer-events: none;
+}
+
+/* 主内容区垫一层半透明深色，文字永远不直接坐在壁纸上 */
+.site-workspace {
+  background: rgba(12, 10, 24, 0.45);
 }
