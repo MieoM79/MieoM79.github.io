@@ -88,3 +88,53 @@ main#main {
   padding: 16px 20px;
   margin-top: 16px;
 }
+
+/* ===== 游客互动：浏览量 + 点赞（文章页） ===== */
+#visitor-stats {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin: 20px 2px 4px;
+  font-size: 0.86em;
+  color: #55516a;
+}
+#visitor-stats .vs-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  line-height: 1;
+}
+#visitor-stats svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+#visitor-stats b { font-weight: 600; margin-right: 2px; }
+#vs-like {
+  cursor: pointer;
+  border: 1px solid rgba(106, 90, 205, 0.28);
+  background: rgba(106, 90, 205, 0.07);
+  color: #55516a;
+  padding: 7px 16px;
+  border-radius: 999px;
+  font: inherit;
+  transition: all 0.22s ease;
+}
+#vs-like:hover {
+  border-color: #6a5acd;
+  color: #6a5acd;
+  transform: translateY(-1px);
+}
+#vs-like.done {
+  color: #c94f6d;
+  border-color: rgba(201, 79, 109, 0.45);
+  background: rgba(201, 79, 109, 0.09);
+  cursor: default;
+}
+#vs-like.done svg { fill: #c94f6d; stroke: #c94f6d; }
+#vs-like.done:hover { transform: none; }
+:root[data-theme="dark"] #visitor-stats { color: #b7b2cc; }

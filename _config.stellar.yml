@@ -132,3 +132,18 @@ inject:
     <div id="page-bg"></div>
   body_end: |
     <script src="/page-bg.js"></script>
+    <script src="/visitor-stats.js" defer></script>
+
+comments:
+  provider: giscus
+  title: 树洞回声
+  giscus:
+    data-repo: MieoM79/MieoM79.github.io
+    data-repo-id: R_kgDOUTCYbQ
+    data-category: Announcements
+    data-category-id: DIC_kwDOUTCYbc4DFjQ8
+    data-mapping: pathname
+    data-reactions-enabled: 1
+    data-input-position: top
+    data-theme: preferred_color_scheme
+    data-lang: zh-CN
