@@ -32,7 +32,6 @@
   }
 
   function apply(key, pv, like) {
-    if (!pv && !like) return;
     var list = map[key];
     if (!list) return;
     list.forEach(function (a) {
