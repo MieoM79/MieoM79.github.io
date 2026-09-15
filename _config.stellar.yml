@@ -132,8 +132,8 @@ inject:
     <div id="page-bg"></div>
   body_end: |
     <script src="/page-bg.js"></script>
-    <script src="/visitor-stats.js" defer></script>
-    <script src="/card-stats.js" defer></script>
+    <script src="/visitor-stats.js?v=3" defer></script>
+    <script src="/card-stats.js?v=3" defer></script>
 
 comments:
   provider: giscus
