@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+# 后台不参与搜索引擎收录
+Disallow: /admin/
