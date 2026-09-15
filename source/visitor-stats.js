@@ -1,8 +1,11 @@
 // 文章页 游览量 + 点赞（数据来自 oauth-proxy /api/counter）
 // 特点：点赞可取消(toggle)、乐观更新、失败回滚、PV 延迟计数(停留/滚动才计入)、数字千分位格式化
 (function () {
+  // 只在文章页生效：必须有 article 卡片主体，且不是列表页(首页/归档/标签的卡片也是 article.md-text)
   var art = document.querySelector('article.md-text') || document.querySelector('main article');
-  if (!art) return; // 只在文章页生效
+  if (!art) return;
+  if (document.querySelector('a.post-card')) return; // 列表页卡片含 post-card，跳过
+  if (!/^\/(\d{4})\/(\d{2})\/(\d{2})\//.test(location.pathname)) return; // 非文章 URL(如 /about/) 跳过
 
   var API = 'https://oauth-proxy-tan.vercel.app/api/counter';
   var path = location.pathname;
