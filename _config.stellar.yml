@@ -133,6 +133,7 @@ inject:
   body_end: |
     <script src="/page-bg.js"></script>
     <script src="/visitor-stats.js" defer></script>
+    <script src="/card-stats.js" defer></script>
 
 comments:
   provider: giscus

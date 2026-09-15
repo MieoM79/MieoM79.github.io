@@ -1,4 +1,5 @@
 // 文章页 游览量 + 点赞（数据来自 oauth-proxy /api/counter）
+// 特点：点赞可取消(toggle)、乐观更新、失败回滚、PV 延迟计数(停留/滚动才计入)、数字千分位格式化
 (function () {
   var art = document.querySelector('article.md-text') || document.querySelector('main article');
   if (!art) return; // 只在文章页生效
@@ -21,6 +22,16 @@
   var likeNEl = document.getElementById('vs-like-n');
   var likeBtn = document.getElementById('vs-like');
 
+  // 数字格式化：≥1000 显示 1.2k
+  function fmt(n) {
+    n = Number(n) || 0;
+    if (n >= 1000) {
+      var s = (n / 1000).toFixed(1).replace(/\.0$/, '');
+      return s + 'k';
+    }
+    return String(n);
+  }
+
   var liked = false;
   try { liked = localStorage.getItem('liked:' + path) === '1'; } catch (e) {}
   if (liked) likeBtn.classList.add('done');
@@ -38,27 +49,62 @@
     .then(function (r) { return r.ok ? r.json() : null; })
     .then(function (d) {
       if (!d) { pvEl.textContent = '–'; likeNEl.textContent = '–'; return; }
-      pvEl.textContent = d.pv;
-      likeNEl.textContent = d.like;
+      pvEl.textContent = fmt(d.pv);
+      likeNEl.textContent = fmt(d.like);
     })
     .catch(function () { pvEl.textContent = '–'; likeNEl.textContent = '–'; });
 
-  // 计一次浏览（同一会话只计一次）
+  // 计一次浏览：延迟触发——页面可见停留 5 秒，或发生滚动/点击后立即计（同一会话只计一次）
   var counted = false;
   try { counted = sessionStorage.getItem('pv:' + path) === '1'; } catch (e) {}
   if (!counted) {
-    post('pv').then(function (d) { if (d && d.action === 'pv') pvEl.textContent = d.count; });
-    try { sessionStorage.setItem('pv:' + path, '1'); } catch (e) {}
+    var fired = false;
+    var fire = function () {
+      if (fired) return;
+      fired = true;
+      post('pv').then(function (d) { if (d && d.action === 'pv') pvEl.textContent = fmt(d.count); });
+      try { sessionStorage.setItem('pv:' + path, '1'); } catch (e) {}
+    };
+    var delayed = setTimeout(fire, 5000);
+    // 页面不可见时暂停计时，回到可见再重新计时
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) { clearTimeout(delayed); }
+      else if (!fired) { delayed = setTimeout(fire, 5000); }
+    });
+    window.addEventListener('scroll', fire, { passive: true });
+    window.addEventListener('click', fire);
   }
 
+  // 点赞 toggle：乐观更新 + 失败回滚
+  var busy = false;
   likeBtn.addEventListener('click', function () {
-    if (liked) return;
-    post('like').then(function (d) {
-      if (!d) return;
-      likeNEl.textContent = d.count;
-      liked = true;
-      likeBtn.classList.add('done');
-      try { localStorage.setItem('liked:' + path, '1'); } catch (e) {}
+    if (busy) return;
+    busy = true;
+    var prevShown = likeNEl.textContent;
+    var oldCount = Number(likeNEl.textContent) || 0;
+    // 乐观更新
+    likeNEl.textContent = fmt(oldCount + (liked ? -1 : 1));
+    var wasLiked = liked;
+    likeBtn.classList.toggle('done', !wasLiked);
+
+    post(wasLiked ? 'unlike' : 'like').then(function (d) {
+      busy = false;
+      if (!d) {
+        // 失败回滚
+        likeNEl.textContent = fmt(prevShown);
+        likeBtn.classList.toggle('done', wasLiked);
+        return;
+      }
+      likeNEl.textContent = fmt(d.count);
+      liked = d.action === 'like';
+      try {
+        if (liked) localStorage.setItem('liked:' + path, '1');
+        else localStorage.removeItem('liked:' + path);
+      } catch (e) {}
+    }).catch(function () {
+      busy = false;
+      likeNEl.textContent = fmt(prevShown);
+      likeBtn.classList.toggle('done', wasLiked);
     });
   });
 })();
