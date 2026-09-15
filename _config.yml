@@ -105,3 +105,14 @@ deploy:
   type: git
   repo: https://github.com/MieoM79/MieoM79.github.io.git
   branch: gh-pages
+
+# RSS 订阅（读者可用阅读器追更）
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20
+  content: true
+
+# 站点地图（搜索引擎收录）
+sitemap:
+  path: sitemap.xml
