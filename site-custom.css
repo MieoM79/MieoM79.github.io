@@ -138,3 +138,26 @@ main#main {
 #vs-like.done svg { fill: #c94f6d; stroke: #c94f6d; }
 #vs-like.done:hover { transform: none; }
 :root[data-theme="dark"] #visitor-stats { color: #b7b2cc; }
+
+/* ===== 首页文章卡片热度（浏览 · 喜欢） ===== */
+a.post-card .meta .card-stats {
+  margin-left: auto;
+  white-space: nowrap;
+  color: inherit;
+  opacity: 0.62;
+  font-size: 0.82em;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+a.post-card .meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+a.post-card .meta .card-stats::before {
+  content: "●";
+  font-size: 0.55em;
+  opacity: 0.7;
+}
