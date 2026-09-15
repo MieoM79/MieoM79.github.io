@@ -25,14 +25,16 @@
   var likeNEl = document.getElementById('vs-like-n');
   var likeBtn = document.getElementById('vs-like');
 
-  // 数字格式化：≥1000 显示 1.2k
+  // 数字格式化：≥1000 显示 1.2k；非数字(如加载中的 '…' / 失败的 '–')原样返回
   function fmt(n) {
-    n = Number(n) || 0;
-    if (n >= 1000) {
-      var s = (n / 1000).toFixed(1).replace(/\.0$/, '');
+    if (typeof n === 'string' && !/^\d+$/.test(n.trim())) return n;
+    var num = Number(n);
+    if (!isFinite(num)) return String(n);
+    if (num >= 1000) {
+      var s = (num / 1000).toFixed(1).replace(/\.0$/, '');
       return s + 'k';
     }
-    return String(n);
+    return String(num);
   }
 
   var liked = false;
