@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <author>
+    <name>MieoM79</name>
+  </author>
+  <generator uri="https://hexo.io/">Hexo</generator>
+  <id>https://mieom79.github.io/</id>
+  <link href="https://mieom79.github.io/" rel="alternate"/>
+  <link href="https://mieom79.github.io/atom.xml" rel="self"/>
+  <rights>All rights reserved 2026, MieoM79</rights>
+  <subtitle>把心事，说给这里听</subtitle>
+  <title>MieoM79の树洞</title>
+  <updated>2026-09-15T01:05:24.026Z</updated>
+  <entry>
+    <author>
+      <name>MieoM79</name>
+    </author>
+    <category term="随笔" scheme="https://mieom79.github.io/tags/%E9%9A%8F%E7%AC%94/"/>
+    <content>
+      <![CDATA[<p>西郊有密林，助君出重围</p>]]>
+    </content>
+    <id>https://mieom79.github.io/2026/09/08/2026-09-09-first-time/</id>
+    <link href="https://mieom79.github.io/2026/09/08/2026-09-09-first-time/"/>
+    <published>2026-09-08T23:01:00.000Z</published>
+    <summary>
+      <![CDATA[<p>西郊有密林，助君出重围</p>]]>
+    </summary>
+    <title>First Time</title>
+    <updated>2026-09-15T01:05:24.026Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>MieoM79</name>
+    </author>
+    <category term="随笔" scheme="https://mieom79.github.io/tags/%E9%9A%8F%E7%AC%94/"/>
+    <content>
+      <![CDATA[<p>这里是我决定安放心事的地方。</p><p>没有太多目的，只是想给那些说不出口的、或者还来不及想清楚的话，找一个可以放心写下来的角落。就像小时候在书页空白处涂鸦，不必好看，也不必被谁读懂。</p><p>以后大概会有很多碎片一样的文字——一些很普通的日子，一些忽然冒出来的念头，一些看过的书和电影留下的影子。它们不一定完整，但都是真实存在过的我。</p><p>如果你也刚好路过这里，欢迎坐下。不用着急留言，安静地看一会儿就好。</p><blockquote><p>今日も、頑張って。</p></blockquote><p>—— MieoM79</p>]]>
+    </content>
+    <id>https://mieom79.github.io/2025/12/31/welcome/</id>
+    <link href="https://mieom79.github.io/2025/12/31/welcome/"/>
+    <published>2025-12-31T16:00:00.000Z</published>
+    <summary>
+      <![CDATA[<p>这里是我决定安放心事的地方。</p>
+<p>没有太多目的，只是想给那些说不出口的、或者还来不及想清楚的话，找一个可以放心写下来的角落。就像小时候在书页空白处涂鸦，不必好看，也不必被谁读懂。</p>
+<p>以后大概会有很多碎片一样的文字——一些很普通的日子，一些忽然冒出来的念]]>
+    </summary>
+    <title>你好，树洞</title>
+    <updated>2026-09-15T01:05:24.026Z</updated>
+  </entry>
+</feed>
