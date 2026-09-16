@@ -6,15 +6,75 @@
   <meta name="robots" content="noindex, nofollow">
   <title>树洞管理后台 · MieoM79</title>
   <style>
-    /* 后台专属皮肤：与主站区分开 */
-    body { background: #f6f4fa; }
-    /* 主色微调为 EVA 紫 */
+    /* ===== 后台皮肤：EVA 紫，与主站一致 ===== */
     :root {
       --primary: #6a5acd;
       --secondary: #c94f6d;
+      --bg: #f4f2fa;
+      --surface: #ffffff;
+      --text: #2a2740;
+      --muted: #7b7693;
+      --radius: 12px;
+      --shadow: 0 8px 30px rgba(30, 22, 66, 0.10);
     }
-    /* 登录卡与侧边栏圆角 */
-    #app a, #app button { border-radius: 6px; }
+
+    body {
+      background: var(--bg);
+      font-family: "LXGW WenKai Screen", "PingFang SC", "Microsoft YaHei", sans-serif;
+    }
+
+    /* 登录卡片 */
+    .Login-wrap, .Login, .login-card, .login-card-spacer {
+      border-radius: var(--radius);
+    }
+    .Login-wrap .Login {
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+    #app a, #app button { border-radius: 8px; }
+
+    /* 侧边导航 */
+    .Sidebar, .Sidebar-nav {
+      background: linear-gradient(180deg, #f7f5fd 0%, #efecf9 100%);
+    }
+    .Sidebar .NavLink.active {
+      background: rgba(106, 90, 205, 0.14);
+      color: var(--primary) !important;
+      border-radius: 8px;
+    }
+
+    /* 顶栏 */
+    .AppHeader {
+      background: var(--surface);
+      border-bottom: 1px solid #e9e6f4;
+    }
+
+    /* 主色按钮 */
+    .btn-primary, button[type="submit"] {
+      background: var(--primary) !important;
+      border-color: var(--primary) !important;
+    }
+    .btn-primary:hover, button[type="submit"]:hover {
+      background: #5a4bc0 !important;
+    }
+
+    /* 输入框聚焦 */
+    input:focus, textarea:focus, .CodeMirror-focused {
+      border-color: var(--primary) !important;
+      box-shadow: 0 0 0 2px rgba(106, 90, 205, 0.18) !important;
+    }
+
+    /* 编辑区卡片感 */
+    .EditorContainer {
+      padding-top: 8px;
+    }
+
+    /* 去掉顶栏可能要回主站的图标提示（display_url 已不配置，这里兜底隐藏） */
+    [data-testid="app-header-site-link"],
+    a[href="https://MieoM79.github.io"],
+    a[href="https://mieom79.github.io"] {
+      display: none !important;
+    }
   </style>
 </head>
 <body>
