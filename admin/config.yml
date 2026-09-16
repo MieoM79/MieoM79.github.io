@@ -1,10 +1,17 @@
 # Decap CMS 配置
+#
+# 设计说明（参考 xaoxuu 站长 front-matter 字段驱动的工作流）：
+# 文章的一切展示选项（封面、横幅、置顶、评论开关、创作方式）都做成表单字段，
+# 保存到文章头部，主题 schema 会读取生效；站长站文章即按此结构管理。
+#
+# 注意：本配置故意【不设置】 display_url / site_url——
+# Decap 官方文档：配置 display_url 后，后台顶栏固定区会出现"返回主站"链接
+#（点击即跳出后台，表现为"点首页跳回主站"），且该链接默认回落到 site_url。
+# 我们没有 preview_path，site_url 也无需配置，因此两者都省略。
 
 # 后台品牌与语言
 logo_url: /images/avatar.jpg
 locale: zh_Hans
-display_url: https://MieoM79.github.io
-site_url: https://MieoM79.github.io
 
 backend:
   name: github
@@ -21,17 +28,69 @@ media_folder: source/images
 public_folder: /images
 
 collections:
+  # ============ 文章 ============
   - name: posts
     label: 文章
+    label_singular: 文章
     folder: source/_posts
     create: true
     slug: "{{slug}}"
+    summary: "{{title}} · {{fields.date}}"
     fields:
       - { label: 标题, name: title, widget: string }
+      - label: 发布时间
+        name: date
+        widget: datetime
+        date_format: "YYYY-MM-DD"
+        time_format: false
+        required: false
+        hint: 留空则用文件创建时间；显示的日期以此为准
+      - label: 标签
+        name: tags
+        widget: list
+        required: false
+        field: { label: 标签, name: tag, widget: string }
+      - { label: 封面图, name: cover, widget: image, required: false, hint: 可选：卡片与分享缩略图用（纯文字卡片可留空） }
+      - { label: 卡片小字, name: tagline, widget: string, required: false, hint: 可选：列表卡片上的补充说明 }
+      - label: 置顶
+        name: listing
+        widget: object
+        required: false
+        fields:
+          - { label: 置顶权重, name: priority, widget: number, default: 0, min: 0, required: false, hint: 大于 0 时置顶，数字越大越靠前 }
+      - label: 评论开关
+        name: comments
+        widget: object
+        required: false
+        fields:
+          - { label: 允许评论, name: enabled, widget: boolean, default: true, required: false, hint: 关闭后这篇文章不显示评论区 }
+      - label: 创作信息（可选）
+        name: article
+        widget: object
+        required: false
+        fields:
+          - { label: 排版风格, name: style, widget: select, default: story, options: ["tech", "story"], required: false, hint: tech=技术文，story=随笔（默认） }
+          - label: AI 标记
+            name: ai_label
+            widget: select
+            default: manual
+            options: ["manual", "reviewed", "polished", "generated"]
+            required: false
+            hint: 说明创作方式：manual=纯手工 / reviewed=AI 辅助复核 / polished=AI 润色 / generated=AI 生成
       - { label: 正文, name: body, widget: markdown }
-      - { label: 标签(可选), name: tags, widget: list, required: false }
 
-  # 站点设置（单文件编辑，保存即生效）
+  # ============ 独立页面 ============
+  - name: pages
+    label: 独立页面
+    files:
+      - name: about
+        label: 关于页（/about/）
+        file: source/about/index.md
+        fields:
+          - { label: 标题, name: title, widget: string, required: false }
+          - { label: 正文, name: body, widget: markdown }
+
+  # ============ 站点设置（单文件编辑，保存即生效） ============
   - name: settings
     label: 站点设置
     files:
@@ -39,32 +98,7 @@ collections:
         label: 背景壁纸
         file: source/_data/background.yml
         fields:
-          - label: 启用哪些壁纸
-            name: images
-            widget: list
-            required: false
-            hint: 点「添加」从图库里选图；顺序即轮换顺序
-            field: { label: 图片, name: image, widget: image }
-          - label: 可见度
-            name: opacity
-            widget: number
-            min: 0
-            max: 1
-            step: 0.02
-            default: 0.62
-            hint: 越小越淡（0.3 很含蓄，0.8 很明显）
-          - label: 模糊程度
-            name: blur
-            widget: number
-            min: 0
-            max: 30
-            step: 1
-            default: 3
-            hint: 0 = 清晰，数字越大越模糊
-          - label: 切换间隔（秒）
-            name: interval
-            widget: number
-            min: 3
-            max: 60
-            step: 1
-            default: 9
+          - { label: 启用哪些壁纸, name: images, widget: list, required: false, hint: 点「添加」从图库里选图；顺序即轮换顺序, field: { label: 图片, name: image, widget: image } }
+          - { label: 可见度, name: opacity, widget: number, min: 0, max: 1, step: 0.02, default: 0.62, hint: 越小越淡（0.3 很含蓄，0.8 很明显） }
+          - { label: 模糊程度, name: blur, widget: number, min: 0, max: 30, step: 1, default: 3, hint: 0 = 清晰，数字越大越模糊 }
+          - { label: 切换间隔（秒）, name: interval, widget: number, min: 3, max: 60, step: 1, default: 9 }
