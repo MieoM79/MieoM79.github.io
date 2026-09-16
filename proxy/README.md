@@ -12,9 +12,19 @@
 Vercel 项目已把 **Root Directory 指向本目录**（monorepo 部署）：
 改这个目录才会触发后端重新部署；改文章等其它目录不影响它。
 
-## 部署
+## 部署（二选一）
 
-推送到 `main` 自动部署（生产域名见博客后台配置里的 `base_url`）。
+**方式 A：命令行部署（当前在用，无需 Vercel 网页设置）**
+
+```bash
+cd proxy
+npx vercel login   # 首次登录
+npx vercel deploy --prod
+```
+
+**方式 B：连接 Git 自动部署（需要 Vercel 网页操作一次）**
+
+到 Vercel 项目设置里把 Git 仓库连到 `MieoM79/MieoM79.github.io`，并把 **Root Directory** 设为 `proxy` —— 之后改 `proxy/` 下的文件并推送到 `main` 即自动部署。
 
 环境变量（在 Vercel 项目 Settings → Environment Variables 中配置）：
 
