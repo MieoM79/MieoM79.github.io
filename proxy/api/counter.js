@@ -21,16 +21,6 @@ module.exports = async (req, res) => {
   // 兼容 Upstash 直连与 Vercel 官方 Redis(KV_*) 两种 REST 变量命名
   const url = process.env.UPSTASH_REDIS_REST_URL || process.env.KV_REST_API_URL;
   const token = process.env.UPSTASH_REDIS_REST_TOKEN || process.env.KV_REST_API_TOKEN;
-  if (req.query && req.query.debug) {
-    return res.status(200).json({
-      has_upstash_url: !!url,
-      has_upstash_token: !!token,
-      has_global_config: !!process.env.GLOBAL_CONFIG,
-      has_redis_url: !!(process.env.REDIS_URL || process.env.REDIS_CONNECTION_STRING),
-      has_kv_url: !!(process.env.KV_REST_API_URL || process.env.STORAGE_URL),
-      env_names: Object.keys(process.env).filter(k => /REDIS|KV|STORAGE|GLOBAL|UPSTASH/i.test(k))
-    });
-  }
   if (!url || !token) {
     return res.status(500).json({ error: 'counter storage not configured' });
   }
